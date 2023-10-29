@@ -1,12 +1,12 @@
 #provider
 provider "aws" {
-    region ="us-east-1"
+    region ="ap-south-1"
     access_key = "AKIAQ52MAWNMZXKS6MDL" 
     secret_key = "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"
 }
 #Resource of multiple applications
 resource "aws_instance" "multiple_applications" {
-    ami="ami-0fc5d935ebf8bc3bc"
+    ami="ami-0287a05f0ef0e9d9a"
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]
     tags = {
