@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout Git') {
             steps {
-               git branch: 'main', url: 'https://github.com/VaraPrasadGudapati/DockerFileGenarator.git'
+               git branch: 'main', url: 'https://github.com/Sadikalivk/DockerFileGenarator.git'
         }
         }
         stage('Terraform init') {
@@ -46,23 +46,23 @@ pipeline {
         stage('Docker image') {
             steps {
                 script {
-                sh 'docker build -t gudapativaraprasad1987/dockerfile-gen .'
+                sh 'docker build -t sadikalivk1/dockerfile-gen .'
                 }
               }
         }
         stage('Dockerhub login in' ) {
             steps {
                 script {
-                   withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'Dockerhubpwd')]) {
-                   sh 'docker login -u gudapativaraprasad1987 -p ${Dockerhubpwd}'    
-                }
+                   withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'sadikdockerpwd', usernameVariable: 'sadikdockeruser')]) {
+                        sh 'docker login -u ${sadikdockeruser} -p ${sadikdockerpwd}' 
+                    }
                                    
                 }
               }
         }
         stage ('Docker push') {
             steps {
-                sh 'docker push gudapativaraprasad1987/dockerfile-gen'    
+                sh 'docker push sadikalivk1/dockerfile-gen'    
             }
             
         }
