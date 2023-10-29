@@ -50,7 +50,7 @@ filename = "Multiple-keypair"
 } 
 #Security group of multiple applications
 resource "aws_security_group" "allow_ssh" {
-  name        = "MultipleApp4"
+  name        = "MultipleApp5"
   description = "Allow SSH inbound traffic"
   #vpc_id      = aws_vpc.vpc_demo.id
 
