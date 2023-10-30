@@ -1,9 +1,3 @@
-#provider
-provider "aws" {
-    region ="ap-south-1"
-    access_key = "AKIAQ52MAWNMZXKS6MDL" 
-    secret_key = "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"
-}
 #Resource of multiple applications
 resource "aws_instance" "multiple_applications" {
     ami="ami-0287a05f0ef0e9d9a"
