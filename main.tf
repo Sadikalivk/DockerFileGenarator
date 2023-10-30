@@ -3,6 +3,9 @@ resource "aws_instance" "multiple_applications" {
     ami="ami-0287a05f0ef0e9d9a"
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+
+    depends_on = [ aws_key_pair.tf-key-pair ]
+
     tags = {
         Name="MultipleAppIns"
     }
@@ -12,7 +15,7 @@ resource "aws_instance" "multiple_applications" {
     type = "ssh"
     host = self.public_ip
     user = "ubuntu"
-    private_key = file("Multiple-keypair")    
+    private_key = file(var.keypair)    
  }
  provisioner "remote-exec" {
   inline = [
